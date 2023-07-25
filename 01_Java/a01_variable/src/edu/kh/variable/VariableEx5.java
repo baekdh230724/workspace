@@ -31,8 +31,10 @@ public class VariableEx5 {
 		final int UP = 500; 
 		final int DOWN = -500;
 		
-		int user1 = INIT;
-		int user2 = INIT;
+		
+		
+		int user1 = INIT; // 1000
+		int user2 = INIT; // 1000
 		
 		System.out.println("1 입력 시 user1 -> 500 증가,  user2 -> 500 감소");
 		System.out.println("2 입력 시 user1 -> 500 감소,  user2 -> 500 증가");
@@ -56,10 +58,12 @@ public class VariableEx5 {
 				 // 1000 + (-500) = 500을 user2에 대입
 		}
 		
+		
 		if(input == 2) { // 2 입력 시
 			user1 = user1 + DOWN;
 			user2 = user2 + UP;
 		}
+		
 		
 		System.out.println("user1 : " + user1);
 		System.out.println("user2 : " + user2);
