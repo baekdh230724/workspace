@@ -213,6 +213,43 @@ public class ConditionEx {
 		// 나이 입력 : 120
 		// 키 입력 : 183.3
 		// 잘못 입력 하셨습니다.
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("나이 입력 : ");
+		int age = sc.nextInt();
+		
+		System.out.print("키 입력 :");
+		double height = sc.nextDouble();
+		
+//		if(age < 0 || age > 100) {
+//			System.out.println("잘못 입력 하셨습니다.");
+//		
+//		} else if(age < 12) {
+//			System.out.println("적정 연령이 아닙니다.");
+//		
+//		} else if(height < 140.0) {
+//			System.out.println("적정 키가 아닙니다.");
+//			
+//		}  else {
+//			System.out.println("탑승 가능");
+//		} 
+		
+		
+		if(age < 0 || age > 100) {
+			System.out.println("잘못 입력 하셨습니다.");
+		
+		} else {
+			if(age < 12) {
+				System.out.println("적정 연령이 아닙니다.");
+			} else if(height < 140.0) {
+				System.out.println("적정 키가 아닙니다.");
+			}  else {
+				System.out.println("탑승 가능");
+			} 
+		}
+		
 	}
 	
 	
