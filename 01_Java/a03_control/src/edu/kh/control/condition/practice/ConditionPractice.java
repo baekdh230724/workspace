@@ -237,10 +237,5 @@ public class ConditionPractice {
 			}
 		}
 		
-		
-		
-		
 	}
-	
-	
 }
