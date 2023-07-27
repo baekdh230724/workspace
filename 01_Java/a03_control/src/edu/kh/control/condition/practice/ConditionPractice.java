@@ -143,12 +143,102 @@ public class ConditionPractice {
 	
 	
 	// 실습문제 4
+//	키, 몸무게를 double로 입력 받고 BMI지수를 계산하여 계산 결과에 따라 
+//	저체중/정상체중/과체중/비만을 출력하세요.
+//
+//	BMI = 몸무게 / (키(m) * 키(m))
+//	BMI가 18.5미만일 경우 저체중   
+//	18.5이상 23미만일 경우 정상체중
+//	BMI가 23이상 25미만일 경우 과체중   
+//	25이상 30미만일 경우 비만
+//	BMI가 30이상일 경우 고도 비만
 	public void practice4() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("키(m)를 입력해 주세요 : ");
+		double height = sc.nextDouble();
+		
+		System.out.print("몸무게(kg)를 입력해 주세요 :");
+		double weight = sc.nextDouble();
+		
+		double bmi = weight / (height * height);
+		
+		String str; // 결과 저장
+		if(bmi < 18.5) {
+			str = "저체중";
+			
+		} else if(bmi < 23) {
+			str = "정상체중";
+			
+		} else if(bmi < 25) {
+			str = "과체중";
+			
+		} else if(bmi < 30) {
+			str = "비만";
+			
+		} else {
+			str = "고도비만";
+		}
+		
+		System.out.println("BMI 지수 : " + bmi);
+		System.out.println(str);
 		
 	}
 	
+	
 	// 실습문제 5
+	
+//	중간고사, 기말고사, 과제점수, 출석횟수를 입력하고 Pass 또는 Fail을 출력하세요.
+//	평가 비율은 중간고사 20%, 기말고사 30%, 과제 30%, 출석 20%로 이루어져 있고
+//	이 때, 출석 횟수는 총 강의 횟수 20회 중에서 출석한 날만 따진 값으로 계산하세요. 
+//	70점 이상일 경우 Pass, 70점 미만이거나 전체 강의에 30% 이상 결석 시 Fail을 출력하세요.
 	public void practice5() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("중간 고사 점수 : ");
+		int midTerm = sc.nextInt();
+		
+		System.out.print("기말 고사 점수 : ");
+		int finalTerm = sc.nextInt();
+		
+		System.out.print("과제  점수 : ");
+		int homework = sc.nextInt();
+		
+		System.out.print("출석 횟수 : ");
+		int attendance = sc.nextInt();
+
+		System.out.println("================= 결과 =================");
+		
+		// 출석 횟수가 부족한 경우 (14회 이하)
+		if(attendance <= 20 * (1 - 0.3)) {
+			System.out.printf("Fail [출석 횟수 부족 (%d/20)]", attendance);
+		
+		} else { // 출석은 잘했을 때
+			
+			// 점수 환산
+			double midScore = midTerm * 0.2;
+			double finalScore = finalTerm * 0.3;
+			double homeworkScore = homework * 0.3;
+			double attScore = attendance * 5 * 0.2; // == attendance
+			
+			// 총점
+			double sum = midScore + finalScore + homeworkScore + attScore;
+			
+			System.out.println("중간 고사 점수(20) : " + midScore);
+			System.out.println("기말 고사 점수(30) : " + finalScore);
+			System.out.println("과제 점수     (30) : " + homeworkScore);
+			System.out.println("출석 점수     (20) : " + attScore);
+			System.out.println("총점 : " + sum);
+			
+			if(sum >= 70) {
+				System.out.println("PASS");
+			}else {
+				System.out.println("Fail [점수 미달]");
+			}
+		}
+		
+		
+		
 		
 	}
 	
