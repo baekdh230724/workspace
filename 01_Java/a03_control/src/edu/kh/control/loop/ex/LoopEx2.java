@@ -214,7 +214,7 @@ public class LoopEx2 {
 				for(int i = 1 ; i <= 9 ; i++) {
 					System.out.printf("%d x %d = %d \n", dan, i , dan*i);
 				}
-				System.out.println("------------------");
+ 				System.out.println("------------------");
 			}
 			break;
 		
@@ -263,11 +263,35 @@ public class LoopEx2 {
 		}
 		*/
 		
-		
-		
-		
-		
 	}
+	
+	
+	/* count 변수 이용하기 */
+
+	// 1 2 3
+	// 4 5 6
+	// 7 8 9
+	public void ex12() {
+		
+		int count = 0; // 안쪽 for문이 반복할 때 마다 1씩 카운트
+		
+		// 1행, 2행, 3행(1줄, 2줄, 3줄)
+		for(int row = 1 ; row <= 3 ; row ++) {
+			
+			// 1열, 2열, 3열 (각 줄의 1번칸, 2번칸, 3번칸)
+			for(int column = 1 ; column <= 3 ; column++) {
+				count++; // 열(칸)을 방문할 때 마다 1씩 증가
+				System.out.print(count + " ");
+			}
+			
+			System.out.println(); // 개행
+		}
+	}
+	
+	
+	
+	
+	
 	
 	
 	
