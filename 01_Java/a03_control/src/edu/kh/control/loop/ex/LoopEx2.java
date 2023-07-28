@@ -1,0 +1,278 @@
+package edu.kh.control.loop.ex;
+
+import java.util.Scanner;
+
+public class LoopEx2 {
+
+	// 구구단 2단 출력하기
+	// 2 x 1 = 2
+	// 2 x 2 = 4
+	// 2 x 3 = 6
+	// 2 x 4 = 8
+	// 2 x 5 = 10
+	// 2 x 6 = 12
+	// 2 x 7 = 14
+	// 2 x 8 = 16
+	// 2 x 9 = 18
+	public void ex1() {
+		System.out.println("구구단 2단 출력하기");
+		
+		for(int i=1 ; i<=9 ; i++) {
+			System.out.printf("2 x %d = %d \n", i, 2*i);
+		}
+	}
+	
+	// 입력 받은 단 출력하기
+	
+	// [실행 화면]
+	// 단 입력 : 3
+	
+	// [구구단 3단]
+	// 3 x 1 = 3
+	// 3 x 2 = 6
+	// ...
+	// 3 x 9 = 27
+	
+	public void ex2() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("단 입력 : ");
+		int dan = sc.nextInt();
+		
+		System.out.printf("\n[구구단 %d단]\n", dan);
+		
+		for(int i=1 ; i<=9 ; i++) {
+			System.out.printf("%d x %d = %d \n",dan, i, dan*i);
+		}
+	}
+	
+	
+	// 입력 받은 단 출력하기
+	// 조건 : 입력 받은 값이 2~9 사이 일때만 구구단 출력
+	//        2~9사이가 아닐 경우 "잘못 입력 하셨습니다" 출력
+	public void ex3() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("단 입력 : ");
+		int dan = sc.nextInt();
+		
+		if(dan >= 2 && dan <= 9) { // dan이 2 이상 9 이하인 경우
+			
+			System.out.printf("\n[구구단 %d단]\n", dan);
+			
+			for(int i=1 ; i<=9 ; i++) {
+				System.out.printf("%d x %d = %d \n",dan, i, dan*i);
+			}
+			
+		} else {
+			System.out.println("잘못 입력 하셨습니다");
+		}
+	}
+	
+	
+	
+	// 5 4 3 2 1    출력 하기(반복문 사용해서!) 
+	public void ex4() {
+		
+		// 1 2 3 4 5
+		for(int i=1 ; i<=5 ; i++) {
+			System.out.printf("%d ", i);
+		}
+		
+		System.out.println();
+		
+		// 5 4 3 2 1
+		for(int i=5 ; i >= 1 ; i--) {
+			System.out.printf("%d ", i);
+		}
+		
+	}
+	
+	// 9 8 7 6 5 4   출력하기
+	public void ex5() {
+		//  i>=4   ==   i>3
+		for(int i=9 ; i>3 ; i--) {
+			System.out.printf("%d ", i);
+		}
+	}
+	
+	
+	/* 중첩 반복문 */
+	
+	// 12345
+	// 12345
+	// 12345
+	// 12345
+	// 12345
+	public void ex6() {
+		
+		// 5회 반복
+		for(int x=1 ; x<=5 ; x++) {
+			
+			// 5반복하면서 12345 출력
+			for(int i=1 ; i<=5 ; i++) {
+				System.out.print(i);
+			}
+			System.out.println(); // 12345 출력 후 줄바꿈
+			
+		}
+	}
+	
+	
+	// 54321
+	// 54321
+	// 54321
+	// 54321
+	
+	public void ex7() {
+		// 4회 반복
+		for(int x=4 ; x>=1 ; x--) {
+			
+			// 54321 (개행)
+			for(int i=5 ; i>=1 ; i--) {
+				System.out.print(i);
+			}
+			System.out.println();
+		}
+	}
+	
+	
+	// (0,0) (0,1) (0,2)
+	// (1,0) (1,1) (1,2)
+	
+	public void ex8() {
+		
+		// () 내부 첫번째 칸의 값 0 1
+		for(int x=0 ; x<=1 ; x++) {
+			// () 내부 두번째 칸의 값 0 1 2
+			for(int i=0 ; i<=2 ; i++) {
+				System.out.printf("(%d,%d) ", x, i);
+			}
+			System.out.println(); // 개행
+		}
+	}
+	
+	
+	// 2단부터 9단까지 모두 출력하기
+	public void ex9() {
+		// 8회 반복
+		for(int x=2 ; x<=9 ; x++) {
+		
+			// x단 출력 for문
+			for(int i=1 ; i<=9 ; i++) {
+				System.out.printf("%d x %d = %d \n", x, i, x*i );
+			}
+			System.out.println("--------------------");
+		}
+	}
+	
+	
+	// 구구단 거꾸로 출력하기
+	// [9단]
+	// 9 x 1 = 9
+	// 9 x 2 = 18
+	// ...
+	// -------------
+	// [8단]
+	// 8 x 1 = 8
+	// 8 x 2 = 16
+	public void ex10() {
+		
+		// 단 지정
+		for(int dan=9 ; dan>=2 ; dan--) {
+			System.out.printf("[%d단] \n", dan);
+			
+			// 곱해지는 수 지정
+			for(int i=1 ; i<=9 ; i++) {
+				System.out.printf("%d x %d = %d \n", dan, i ,dan * i);
+			}
+			
+			System.out.println("----------------");
+		}
+	}
+	
+	
+	// 구구단 출력하기
+	// [조건]
+	// - 1 입력 시 2 ~ 9 순서로 출력
+	// - 2 입력 시 9 ~ 2 순서로 출력
+	// - 1,2가 아니면 "잘못 입력 하셨습니다"  출력
+	
+	public void ex11() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("1) 2-9순서대로  /  2) 9-2역순으로 : "); // 1 or 2
+		int input = sc.nextInt();
+		
+		switch(input) {
+		case 1 :   
+			for(int dan = 2 ; dan <= 9 ; dan++) {
+				System.out.printf("[%d단]\n", dan); // 제목
+				
+				for(int i = 1 ; i <= 9 ; i++) {
+					System.out.printf("%d x %d = %d \n", dan, i , dan*i);
+				}
+				System.out.println("------------------");
+			}
+			break;
+		
+		case 2 :	
+			
+			for(int dan = 9 ; dan >= 2 ; dan--) {
+				System.out.printf("[%d단]\n", dan); // 제목
+				
+				for(int i = 1 ; i <= 9 ; i++) {
+					System.out.printf("%d x %d = %d \n", dan, i , dan*i);
+				}
+				System.out.println("------------------");
+			}
+			
+			break;
+		
+		default : System.out.println("잘못 입력 하셨습니다");
+		}
+		
+		
+		
+		
+		/*
+		if(input == 1) { //  2-9순서대로
+			for(int dan = 2 ; dan <= 9 ; dan++) {
+				System.out.printf("[%d단]\n", dan); // 제목
+				
+				for(int i = 1 ; i <= 9 ; i++) {
+					System.out.printf("%d x %d = %d \n", dan, i , dan*i);
+				}
+				
+				System.out.println("------------------");
+			}
+		} else if (input == 2) {// 9-2역순으로 
+			for(int dan = 9 ; dan >= 2 ; dan--) {
+				System.out.printf("[%d단]\n", dan); // 제목
+				
+				for(int i = 1 ; i <= 9 ; i++) {
+					System.out.printf("%d x %d = %d \n", dan, i , dan*i);
+				}
+				
+				System.out.println("------------------");
+			}
+		} else {
+			System.out.println("잘못 입력 하셨습니다.");
+		}
+		*/
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

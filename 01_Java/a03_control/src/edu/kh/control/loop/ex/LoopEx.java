@@ -186,9 +186,6 @@ public class LoopEx {
 		System.out.print("끝 ");
 		
 		
-		
-		
-		
 		/*
 		for(int i=1 ; i<=10 ; i++) {
 		
@@ -210,13 +207,52 @@ public class LoopEx {
 		*/
 	}
 	
+	// 1부터 20까지 1씩 증가하는 반복문을 이용해
+	// 짝수의 합, 홀수의 합을 구해서 출력
+	public void ex11() {
+		
+		int sum1 = 0; // 홀수 합
+		int sum2 = 0; // 짝수 합
+		
+		for(int i=1 ; i <=20 ; i++) {
+			
+			if( i % 2 == 1) { // 홀수
+				sum1 += i; // 홀수
+				
+			} else { // 짝수
+				sum2 += i; // 짝수
+			}
+		}
+		
+		System.out.println("짝수 합 : " + sum2);
+		System.out.println("홀수 합 : " + sum1);
+	}
 	
+	// (1부터 100까지 1씩 증가하는 반복문을 이용)
 	
+	// 1 ~ 100 사이 수 중 
+	// 입력 받은 수의 배수를 뺀 나머지 수의 합을 출력
 	
+	// 입력 : 3  (3의 배수를 제외하고 합계 구하기)
+	// 1 2  4 5  7 8  10 11  ... 100
+	
+	public void ex12() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("제외할 배수 입력 : ");
+		int num = sc.nextInt();
+		
+		int sum = 0;
+		
+		for(int i=1 ; i<=100 ; i++) {
+			if(i % num != 0) { // num의 배수가 아닌 경우
+				sum += i;
+			}
+		}
+		
+		System.out.println("합계 : " + sum);
+	}
 }
-
-
-
 
 
 

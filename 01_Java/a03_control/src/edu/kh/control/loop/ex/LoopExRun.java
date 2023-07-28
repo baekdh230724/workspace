@@ -14,6 +14,8 @@ public class LoopExRun {
 //		loop.ex7();
 //		loop.ex8();
 //		loop.ex9();
-		loop.ex10();
+//		loop.ex10();
+//		loop.ex11();
+		loop.ex12();
 	}
 }
