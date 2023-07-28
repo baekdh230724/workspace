@@ -289,14 +289,150 @@ public class LoopEx2 {
 	}
 	
 	
+	// 1 2 3 4
+	// 5 6 7 8
+	// 9 10 11 12
+	
+	public void ex13() {
+		
+		int count = 0;
+		
+		// 2중 for문 사용
+		for(int row=1 ; row<=3 ; row++) {
+			
+			for(int col=1 ; col<=4 ; col++) {
+				count++;
+				System.out.print(count + " ");
+			}
+			
+			System.out.println();
+		}
+		
+		System.out.println("----------------------------");
+		
+		// 단일 for문 + if
+		for(int i=1 ; i<=12 ; i++) {
+			System.out.print(i + " ");
+			
+			if(i % 4 == 0) {
+				System.out.println(); // 개행
+			}
+		}
+		
+	}
+	
+	
+	// 행/열의 크기를 입력 받아 출력하기 + count
+	public void ex14() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("행 : ");
+		int row = sc.nextInt();
+		
+		System.out.print("열 : ");
+		int col = sc.nextInt();
+		
+		int count = 0;
+		
+		// 초기식, 조건식, 증감식은 상황에 따라서 
+		// 늘어나거나 작성하지 않을 수 있다!!
+		
+		// for( ;  ; ) --> 무한루프 (조건문 X -> false안됨 -> 종료 X)
+		
+		// 초기식 작성 X -> 대신 row, col(입력 받은 값) 사용
+		for( ; row >= 1 ; row--) {  // 4 3 2 1(4바퀴)
+			
+			for(int y=col ; y >= 1 ; y-- ) {
+				
+				// ++count : 전위연산 -> 먼저 count 1 증가
+				System.out.print(++count + " ");
+			}
+			System.out.println();
+		}
+	}
+
+
+	
+	// 1
+	// 12
+	// 123
+	// 1234
+	
+
+	// -> 줄(행)이 증가할 때 마다
+	//    칸(열)이 같은 수로 증가
+	public void ex15() {
+		
+//	첫번째 줄 : 1
+//	두번째 줄 : 1 2
+//	세번째 줄 : 1 2 3
+//	네번째 줄 : 1 2 3 4
+	
+		for(int row=1 ; row<=4 ; row++) {
+			
+			for(int col=1 ; col <= row ; col++) {
+				System.out.print(col + " ");
+			}
+
+			System.out.println();
+		}
+	}
 	
 	
 	
+	// 1 2 3 4
+	// 1 2 3
+	// 1 2
+	// 1
+	
+	public void ex16() {
+		
+		for(int row=4 ; row >= 1 ; row--) { // 4 3 2 1
+								
+			for(int col=1 ; col <= row ; col++) {
+				System.out.print(col + " ");
+			}
+			
+			System.out.println();
+		}
+	}
 	
 	
+	// 4 3 2 1
+	// 3 2 1
+	// 2 1
+	// 1
 	
+	public void ex17() {
+		
+		for(int row=4 ; row >= 1 ; row--) { // row : 4 3 2 1
+			
+			// col : 1234 , 123 , 12 , 1
+			// col : 4321 , 321 , 21 , 1
+			
+			for(int col=row ; col >= 1 ; col--) {
+				System.out.print(col + " ");
+			}
+			
+			System.out.println();
+		}
+		
+	}
 	
+
 	
+	// 4
+	// 4 3
+	// 4 3 2
+	// 4 3 2 1
+	public void ex18() {
+		for(int row = 4 ;  row >= 1 ;  row-- ) {
+			for(int col = 4 ; col >=row ; col--) { 
+				System.out.print( col + " ");
+			}
+			System.out.println();
+		}
+	}
 	
 	
 }
