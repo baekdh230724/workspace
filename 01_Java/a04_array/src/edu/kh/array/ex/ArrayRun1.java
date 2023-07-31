@@ -10,6 +10,7 @@ public class ArrayRun1 {
 //		example.ex3();
 //		example.ex4();
 //		example.ex5();
-		example.ex5a();
+//		example.ex5a();
+		example.ex6();
 	}
 }

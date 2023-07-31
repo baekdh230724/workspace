@@ -281,8 +281,8 @@ public class ArrayEx1 {
 				counts[input]++; // 주문한 메뉴 카운트 증ㄱ사
 				sum += prices[input]; // 가격 누적
 			}
-			
 		} // while 종료
+		
 		
 		System.out.println("===== 주문한 메뉴 =====");
 		
@@ -300,7 +300,112 @@ public class ArrayEx1 {
 	}
 	
 	
+	// 입력받은 양의정수 만큼의 크기를 가지는 배열 만들기
+	public void ex6() {
+		
+		// [평균 점수 구하기]
+		// 입력 받을 인원 수 : 4     --> int 4칸짜리 배열 생성
+		// 1번 점수 입력 : 100
+		// 2번 점수 입력 : 20
+		// 3번 점수 입력 : 50
+		// 4번 점수 입력 : 90
+		
+		// 합계 : 260 점
+		// 평균 : 65 점
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("입력 받을 인원 수 : ");
+		int num = sc.nextInt();
+		
+		int[] scores = new int[num]; // 입력 받은 수 만큼의 길이를 가지는 배열 할당
+				
+		
+		int sum = 0;
+					     // == num
+		for(int i=0 ; i<scores.length ; i++) {
+			System.out.print( (i+1) + "번 점수 입력 : " );
+			
+			//(int)
+			scores[i] = sc.nextInt(); // 입력 받은 정수를 배열 요소 저장
+			
+			// scores : 배열명
+			// i : 인덱스
+			// scores[i] : scores의 i번째 요소
+			
+			sum += scores[i]; // 합계 누적
+		}
+		
+		
+		System.out.println("합계 : " + sum + " 점");
+		System.out.println("평균 : " + sum/scores.length + " 점");
+	}
 	
+	
+	
+	/* 생성할 배열의 길이 : 2     	<- 입력
+	 * 
+	 * 0번 인덱스 요소 : 40			<- 입력
+	 * 1번 인덱스 요소 : 60			<- 입력
+	 * 2번 인덱스 요소 : 80			<- 입력
+	 * 
+	 * 저장된 값을 확인하려는 인덱스(-1 종료) : 0 			<- 입력
+	 * 0번 인덱스 : 40
+	 * 
+	 * 저장된 값을 확인하려는 인덱스(-1 종료) : 2 			<- 입력
+	 * 2번 인덱스 : 80
+	 * 
+	 * 저장된 값을 확인하려는 인덱스(-1 종료) : 99 			<- 입력
+	 * 존재하지 않는 인덱스 번호 입니다
+	 * 
+	 * 저장된 값을 확인하려는 인덱스(-1 종료) : -1 			<- 입력
+	 * 프로그램 종료
+	 */
+	
+	public void ex7() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("생성할 배열의 길이 : ");
+		int input = sc.nextInt();
+		
+		// 입력 받은 input 만큼 길이를 가지는 배열 생성
+		int[] arr = new int[input];
+		
+		// 생성된 배열의 모든 요소에 입력 값을 대입
+		for(int i=0 ; i<arr.length ; i++ ) {
+			System.out.print(i + "번 인덱스 요소 : ");
+			arr[i] = sc.nextInt();
+		}
+		
+		
+		while(true) { // 무한 반복
+			
+			System.out.print("저장된 값을 확인하려는 인덱스(-1 종료) : ");
+			int index = sc.nextInt();
+			
+			// 무엇을 입력했는가(index 값에) 따라서 동작을 구분
+			if(index == -1) {
+				System.out.println("프로그램 종료");
+				break; // 반복 종료 
+			}
+			
+			// 배열 인덱스 범위를 초과하는 경우
+			if(index < 0 || index >= arr.length) {
+				System.out.println("존재하지 않는 인덱스 번호 입니다");
+				continue; // 다음 반복으로 이동 (반복문 처음으로 이동)
+			}
+			
+			// 정상 인덱스 입력
+			System.out.printf("%d번 인덱스 : %d \n", index, arr[index]);
+		}
+		
+		
+		
+		// 요즘 개발 트렌드는 if문만 사용한다!
+		// 왜? 유지보수가 편해서
+		
+	}
 	
 	
 	
