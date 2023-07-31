@@ -5,6 +5,11 @@ public class ArrayRun1 {
 		
 		ArrayEx1 example = new ArrayEx1();
 		
-		example.ex1();
+//		example.ex1();
+//		example.ex2();
+//		example.ex3();
+//		example.ex4();
+//		example.ex5();
+		example.ex5a();
 	}
 }
