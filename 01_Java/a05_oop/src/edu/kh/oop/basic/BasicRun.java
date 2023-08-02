@@ -90,6 +90,7 @@ public class BasicRun {
 		n3.age = 30;
 		
 		
+		
 		System.out.printf("%s의 나이는 %d세 입니다.\n", n1.name, n1.age);
 		System.out.printf("%s의 나이는 %d세 입니다.\n", n2.name, n2.age);
 		System.out.printf("%s의 나이는 %d세 입니다.\n", n3.name, n3.age);
@@ -99,7 +100,8 @@ public class BasicRun {
 		n3.납세의의무();
 		
 		
-		
+		n1.setJob("가나다");
+		System.out.println(n1.getJob());
 	}
 	
 	
