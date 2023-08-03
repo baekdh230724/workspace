@@ -7,9 +7,13 @@ public class PersonServiceRun {
 		// PersonService 객체 생성
 		PersonService service = new PersonService(); // 기본 생성자
 		
+		
+		
 		// PersonService 객체에 생성자로 초기화된 title을 얻어와 출력
 		String title = service.getTitle();
 		System.out.println(title);
+		
+		
 		
 		// PersonService의 createPerson을 이용해서 
 		// Person 객체를 생성하여 반환 받기
@@ -21,6 +25,7 @@ public class PersonServiceRun {
 		// 화면에 출력
 		String str = service.personFeilds(p1);
 		System.out.println(str);
+		
 		
 		Person p2 = service.createPerson();
 		String str2 = service.personFeilds(p2);
