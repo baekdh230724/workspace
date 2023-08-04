@@ -45,6 +45,14 @@ public class TestRun {
 		System.out.println( c1.getMoney() );
 		// StackOverflowError
 		
+		System.out.println("--------------------------");
+		
+		Child2 c3 = new Child2(900, "김", "원룸");
+		System.out.println(c3.getMoney()); // Parent
+		System.out.println(c3.getLastName()); // Parent
+		System.out.println(c3.getHouse()); // Child2
+		
+		System.out.println(c3.toString());
 		
 		
 	}
