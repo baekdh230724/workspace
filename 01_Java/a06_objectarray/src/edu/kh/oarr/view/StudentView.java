@@ -34,19 +34,14 @@ public class StudentView {
 			case 1 : System.out.println( addStudent() ); break;
 			case 2 : selectAll();  break;
 			case 3 : selectIndex(); break;
-			
-			case 4 : break;
-			
-			case 5 : break;
+			case 4 : selectName(); break;
+			case 5 : updateStudent(); break;
 			case 6 : selectScore(); break;
-			case 7 : break;
-			
+			case 7 : selectMaxMin(); break;
 			case 0 : System.out.println("[프로그램 종료]"); break;
 			default: System.out.println("잘못 입력");
 			}
-			
 		}while( input != 0 );
-		
 	}
 	
 	
@@ -120,7 +115,7 @@ public class StudentView {
 		
 		if( s == null ) { // 범위 초과 또는 학생 없음
 			System.out.println("해당 인덱스에 학생 정보가 존재하지 않습니다.");
-		
+			
 		} else { // 학생 있음
 			System.out.println("학년 : " + s.getGrade());
 			System.out.println("반 : " + s.getBan());
@@ -171,25 +166,83 @@ public class StudentView {
 		// 존재하지 않으면 
 		// "해당 인덱스에 학생 정보가 존재하지 않습니다." 출력
 		
+		System.out.println("\n----- 학생 정보 수정(인덱스) -----");
+
+		System.out.print("수정할 학생의 인덱스 번호를 입력하세요 : ");
+		int index = sc.nextInt();
 		
-		// 1. 인덱스 번호를 입력 받아 service로 전달하여 
-		//    존재하는 학생이면 학생 객체의 주소, 아니면 null 반환 받기
+		// 입력 받은 인덱스에 학생이 있는지 확인
+		Student s = service.selectIndex(index);
+		// 이미 존재하는 service의 selectIndex(index) 메서드를 이용
 		
-		// 2. 존재하지 않는 학생인 경우
-		//     "해당 인덱스에 학생 정보가 존재하지 않습니다." 출력 후 return
+		if(s == null) {
+			System.out.println("해당 인덱스에 학생 정보가 존재하지 않습니다.");
+			return;
+		}
 		
-		// 3. 2번이 실행되지 않은 경우 ( == 존재 하는 경우)
-		//    국어, 영어, 수학 점수를 입력 받아
-		//    (반환 받은 학생 객체 주소, 국어, 영어, 수학) 4개를 
-		//    서비스로 전달하여 점수 수정 (반환형 void)
+		System.out.print("수정할 국어 점수 : ");
+		int kor = sc.nextInt(); 
 		
+		System.out.print("수정할 영어 점수 : ");
+		int eng = sc.nextInt(); 
 		
+		System.out.print("수정할 수학 점수 : ");
+		int math = sc.nextInt();
 		
+		// 학생 점수 수정 서비스 호출(반환형 X)
+		service.updateStudent(s, kor, eng, math);
 		
+		System.out.println("학생 정보가 수정되었습니다.");
 	}
 	
 	
+	/** 학생 이름으로 조회 */
+	public void selectName() {
+		System.out.println("\n----- 학생 이름으로 조회 -----");
+		
+		System.out.print("조회할 학생 이름을 입력하세요 : ");
+		
+		String name = sc.next();
+		
+		// 이름이 일치하는 모든 학생을 조회하는 서비스 호출
+		Student[] arr = service.selectName(name);
+		
+		if(arr == null) {
+			System.out.println("일치하는 학생이 없습니다");
+			return;
+		}
+		
+		for(Student s : arr) {
+			System.out.println(s.toString());
+		}
+	}
 	
 	
+	/** 평균 최고점, 최저점 학생 찾기 */
+	public void selectMaxMin() {
+		System.out.println("\n----- 평균 최고점, 최저점 학생 찾기 -----");
+		
+		// 최고점 : 1학년 2반 3번 홍길동 
+		// 국어:100 / 수학:100 / 영어:100 / 평균 : 100.0
+		
+		// 최저점 : 3학년 5반 7번 최미영 
+		// 국어:50 / 수학:40 / 영어:30 / 평균 : 40.0
+		
+		Student[] arr = service.selectMaxMin(); // 최고점, 최저점 학생 조회
+		
+		System.out.printf("최고점 : %d학년 %d반 %d번 %s \n"
+			+ "국어:%d / 수학:%d / 영어:%d / 평균:%.1f \n" ,
+			arr[0].getGrade(), arr[0].getBan(), arr[0].getNumber(), arr[0].getName(), 
+			arr[0].getKor(), arr[0].getEng(), arr[0].getMath(),
+			(arr[0].getKor() + arr[0].getEng() + arr[0].getMath()) / 3.0 );
+		
+		System.out.println(); // 개행
+		
+		System.out.printf("최저점 : %d학년 %d반 %d번 %s \n"
+			+ "국어:%d / 수학:%d / 영어:%d / 평균:%.1f \n" ,
+			arr[1].getGrade(), arr[1].getBan(), arr[1].getNumber(), arr[1].getName(), 
+			arr[1].getKor(), arr[1].getEng(), arr[1].getMath(),
+			(arr[1].getKor() + arr[1].getEng() + arr[1].getMath()) / 3.0 );
+	}
 	
 }

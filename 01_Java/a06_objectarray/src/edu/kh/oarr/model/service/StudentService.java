@@ -44,8 +44,6 @@ public class StudentService {
 	}
 
 	
-	
-	
 	/** 학생 추가 서비스 입니다.*/
 	public boolean addStudent(int grade, int ban, int number, String name) {
 		
@@ -116,10 +114,119 @@ public class StudentService {
 
 
 
-	
-	
-	
-	
-	
-	
+	/** 학생 정보 수정 서비스
+	 */
+	public void updateStudent(Student s, int kor, int eng, int math) {
+		s.setKor(kor);
+		s.setEng(eng);
+		s.setMath(math);
+		
+		// return;
+	}
+
+
+
+	/** 학생 이름으로 조회 서비스 */
+	public Student[] selectName(String name) {
+		
+		// 기본 자료형 || 참조형(주소) || null  비교 시
+		// 비교 연산자 (==, !=)
+		
+		// String || 객체가 가지고 있는 모든 필드 비교
+		// A.equals(B) 사용
+		
+		// 1. 반환하려는 Student 객체 배열의 크기를
+		//    studentArr과 똑같이 만든 후
+		//    검색한 학생을 차례대로 배열에 추가 후 반환
+		//    -> for문으로 출력 시 배열 요소가 null인 경우 반복 종료
+		
+		
+		// 2. 같은 이름의 학생을 studentArr 배열에서 찾아 카운트 한 후
+		// 카운트한 크기 만큼의 학생 객체 배열을 생성 후
+		// 같은 이름의 학생을 찾아 생성한 배열에 추가
+		int count = 0;
+		
+		for(Student s : studentArr) {
+			// NullPointerException (null을 참조해서 필드, 메서드 접근 시 발생)
+			// 방지 하기
+			if(s == null) {
+				break;
+			}
+			
+			if( s.getName().equals(name) ) {
+				// s.getName() 과 name의 값이 같을 때
+				count++; // count 1증가
+			}
+		}
+		
+		
+		// count == 0 인 경우 (같은 이름의 학생이 없음)
+		if(count == 0) {
+			return null;
+		}
+		
+		// 검색된 학생을 저장할 배열 생성
+		Student[] arr = new Student[count];
+		
+		int index = 0; // 검색된 학생 객체의 주소를
+					   // arr 배열의 몇 번 인덱스 대입해야 되는지를 제어
+		for(Student s : studentArr) {
+			
+			if(s == null) { // NullPointerException 방지
+				break;
+			}
+			
+			if( s.getName().equals(name) ) { // 이름이 일치하는 학생일 경우
+				arr[index] = s;
+				index++;
+			}
+		}
+		
+		return arr;
+	}
+
+
+	/** 평균 최고점, 최저점 학생 찾기 서비스 */
+	public Student[] selectMaxMin() {
+		
+		Student[] arr = new Student[2]; // [0]:최고점, [1]:최저점
+		
+		// 인덱스
+		int max = 0;
+		int min = 0;
+		
+		for(int i=0 ; i<studentArr.length ; i++) {
+			
+			if(studentArr[i] == null) { // 더 이상 학생이 없으면 멈춤
+				break;
+			}
+			
+			// 최고점의 합
+			Student s1 = studentArr[max];
+			int maxSum =  s1.getKor() + s1.getEng() + s1.getMath();
+			
+			// 최저점의 합
+			Student s2 = studentArr[min];
+			int minSum =  s2.getKor() + s2.getEng() + s2.getMath();
+			
+			// 현재 인덱스(i) 번째 요소의 합
+			Student s3 = studentArr[i];
+			int sum = s3.getKor() + s3.getEng() + s3.getMath();
+			
+			if(sum > maxSum) { // 최대값 보다 큰 경우
+				max = i; // 현재 인덱스를 max에 저장
+			}
+			
+			if(sum < minSum) { // 최저점 보다 작은 경우
+				min = i;
+			}
+		}
+		
+		// 최고점 학생을 0번, 최저점 학생을 1번 인덱스에 대입
+		arr[0] = studentArr[max];
+		arr[1] = studentArr[min];
+		
+		return arr;
+	}
+
 }
