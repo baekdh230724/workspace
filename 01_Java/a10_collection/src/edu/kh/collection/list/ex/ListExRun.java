@@ -4,6 +4,7 @@ public class ListExRun {
 	public static void main(String[] args) {
 		ListEx example = new ListEx();
 		
-		example.ex1();
+//		example.ex1();
+		example.ex2();
 	}
 }
