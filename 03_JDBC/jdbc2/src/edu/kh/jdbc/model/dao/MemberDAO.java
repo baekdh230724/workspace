@@ -191,6 +191,51 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+
+	/** 비밀번호 변경
+	 * @param conn
+	 * @param email
+	 * @param pw
+	 * @param newPw
+	 * @return result
+	 */
+	public int updatePw(Connection conn, String email, String pw, String newPw) {
+		// 1. 최종 결과 저장 변수 선언
+		int result = 0;
+		
+		// 2. SQL 작성
+		// ?(placeholder) : PreparedStatement에서 사용할 빈칸(값 대입 예정)
+		String sql = "UPDATE MEMBER SET "
+				+ "MEMBER_PW = ? "
+				+ "WHERE MEMBER_EMAIL =? "
+				+ "AND MEMBER_PW = ?";
+	
+		try {
+			
+			// 3. PreaparedStatement 생성
+			pstmt = conn.prepareStatement(sql);
+			// sql을 미리 세팅해서 값 대입할 준비하기
+			
+			// 4. ? 에 알맞은 값 세팅하기
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, email);
+			pstmt.setString(3, pw);
+			
+			// 5. SQL(UPDATE) 수행 결과 반환(성공한 행의 개수) 받기
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			// 6. JDBC 객체 자원 반환
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

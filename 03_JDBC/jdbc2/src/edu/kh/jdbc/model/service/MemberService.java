@@ -98,6 +98,31 @@ public class MemberService {
 		return result;
 	}
 
+
+	/** 비밀번호 변경
+	 * @param email
+	 * @param pw
+	 * @param newPw
+	 * @return
+	 */
+	public int updatePw(String email, String pw, String newPw) {
+		// 1. 커넥션 생성
+		Connection conn = getConnection();
+		
+		// 2. dao 메서드 호출
+		int result = dao.updatePw(conn, email, pw, newPw);
+		
+		// 3. 트랜잭션 처리
+		if(result > 0) 	commit(conn);
+		else			rollback(conn);
+		
+		// 4. 커넥션 반환
+		close(conn);
+		
+		// 5. 결과 반환
+		return result;
+	}
+
 	
 	
 	
