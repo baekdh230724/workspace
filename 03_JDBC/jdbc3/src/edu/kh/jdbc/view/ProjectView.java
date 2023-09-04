@@ -33,6 +33,14 @@ public class ProjectView {
 				System.out.println("3. 회원 정보 수정"); // 닉네임, 전화번호 UPDATE
 				System.out.println("4. 회원 탈퇴"); // MEMBER_DEL_FL = 'Y' UPDATE
 				System.out.println("5. MEMBER 테이블 전체 조회");
+				System.out.println("6. 게시글 작성하기"); // BOARD 테이블에 INSERT
+				
+				// 게시글 번호, 제목, 작성일, 조회수, 작성자번호, 작성자 닉네임
+				// 게시글 번호 내림차순으로 조회
+				// 단, 삭제되지 않은 글만 조회(BOARD_DEL_FL = 'N')
+				System.out.println("7. 게시글 목록 조회"); // selectBoardList()
+				
+				
 				System.out.println("0. 프로그램 종료");
 				
 				System.out.print("메뉴 선택 >> ");
@@ -43,10 +51,11 @@ public class ProjectView {
 				case 1 : insertMember(); break;
 				case 2 : login(); break;
 				case 3 : updateMember(); break;
-				
 				case 4 : updateDelFl(); break;
-				
 				case 5 : selectAllMember();
+				
+				case 6 : insertBoard(); break;
+				
 				case 0 : System.out.println("\n--- 프로그램 종료 ---\n");break;
 				default : System.out.println("\n*** 메뉴 번호만 입력해주세요 ***\n");
 				}
@@ -212,6 +221,53 @@ public class ProjectView {
 			System.out.println("비밀번호가 일치하지 않습니다");
 		}
 	}
+	
+	
+	
+	/**
+	 * 게시글 작성
+	 */
+	private void insertBoard() {
+		System.out.println("\n***** 게시글 작성 *****\n");
+		
+		// 로그인 여부 확인
+		if(loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
+		}
+		
+		System.out.print("제목 입력 : ");
+		String title = sc.nextLine();
+		
+		System.out.println("내용 입력 (입력 종료 : !wq)");
+		
+		String content = ""; // 빈 문자열
+		
+		while(true) { // 무한루프
+			String temp = sc.nextLine(); // 한 줄 입력
+			
+			if(temp.equals("!wq")){ // 입력 종료 커맨드인 경우
+				break;
+			}
+			
+			content += temp + "\n"; // 입력 받은 한 줄을 content에 누적
+		}
+		
+		// BOARD 테이블에 삽입하는 서비스 호출 후 결과 반환 받기
+		int result = service.insertBoard(title, content, loginMember.getMemberNo());
+							//  제목  ,  내용  ,  작성자 회원 번호
+		
+		if(result > 0) { // 삽입 성공 시
+			System.out.println("\n***** 게시글이 등록 되었습니다 *****\n");
+		}else {
+			System.out.println("\n***** 게시글 등록 실패.... *****\n");
+		}
+		
+		
+	}
+	
+	
+	
 	
 }
 

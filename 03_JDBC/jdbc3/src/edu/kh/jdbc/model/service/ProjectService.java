@@ -121,6 +121,28 @@ public class ProjectService {
 		
 		return result;
 	}
+
+
+
+	/** 게시글 작성
+	 * @param title
+	 * @param content
+	 * @param memberNo
+	 * @return
+	 */
+	public int insertBoard(String title, String content, int memberNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.insertBoard(conn, title, content, memberNo);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 	
 	
 	

@@ -352,6 +352,39 @@ public class ProjectDAO {
 		
 		return result;
 	}
+
+
+	/** 게시글 작성
+	 * @param conn
+	 * @param title
+	 * @param content
+	 * @param memberNo
+	 * @return
+	 */
+	public int insertBoard(Connection conn, String title, String content, int memberNo) {
+		
+		int result = 0; // INSERT 결과 저장용 변수
+		
+		String sql = "INSERT INTO BOARD \r\n"
+				+ "VALUES(SEQ_BOARD_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT, DEFAULT, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
