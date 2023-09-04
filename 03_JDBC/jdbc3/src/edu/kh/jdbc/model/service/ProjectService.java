@@ -100,6 +100,27 @@ public class ProjectService {
 		
 		return result;
 	}
+
+
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @param pw
+	 * @return
+	 */
+	public int updateDelFl(int memberNo, String pw) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updateDelFl(conn, memberNo, pw);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 	
 	
 	

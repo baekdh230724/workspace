@@ -42,10 +42,10 @@ public class ProjectView {
 				switch(input) {
 				case 1 : insertMember(); break;
 				case 2 : login(); break;
-				
 				case 3 : updateMember(); break;
 				
-				case 4 : break;
+				case 4 : updateDelFl(); break;
+				
 				case 5 : selectAllMember();
 				case 0 : System.out.println("\n--- 프로그램 종료 ---\n");break;
 				default : System.out.println("\n*** 메뉴 번호만 입력해주세요 ***\n");
@@ -176,6 +176,41 @@ public class ProjectView {
 		
 		if(result > 0) 	System.out.println("\n***** 수정 성공 *****\n");
 		else 			System.out.println("\n***** 수정 실패... *****\n");
+	}
+	
+	
+	
+	/**
+	 * 회원 탈퇴
+	 */
+	private void updateDelFl() {
+		System.out.println("\n***** 회원 탈퇴 *****\n");
+		
+		// 로그인 여부 확인
+		if(loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
+		}
+		
+		// 로그인 상태인 경우
+		// 1) 비밀번호 입력 받기
+		System.out.print("비밀번호 : ");
+		String pw = sc.next();
+		
+		// 2) 서비스 메서드 호출 후 결과 반환 받기
+		// - 매개변수 : 회원번호, 입력 받은 비밀번호
+		// - 반환값 : SQL 수행 후 결과 행의 개수
+		int result = service.updateDelFl(loginMember.getMemberNo() , pw);
+		
+		// 3) 성공일 경우 : "탈퇴 되었습니다", loginMember = null;
+		//    실패일 경우 : "비밀번호가 일치하지 않습니다"
+		
+		if(result > 0) {
+			System.out.println("탈퇴 되었습니다");
+			loginMember = null; // 로그아웃
+		}else {
+			System.out.println("비밀번호가 일치하지 않습니다");
+		}
 	}
 	
 }

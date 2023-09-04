@@ -325,6 +325,33 @@ public class ProjectDAO {
 		}
 		return result;
 	}
+
+
+	public int updateDelFl(Connection conn, int memberNo, String pw) {
+		
+		int result = 0; 
+		
+		String sql = "UPDATE MEMBER SET \r\n"
+				+ "MEMBER_DEL_FL = 'Y'\r\n"
+				+ "WHERE MEMBER_NO = ? \r\n"
+				+ "AND MEMBER_PW = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, pw);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
