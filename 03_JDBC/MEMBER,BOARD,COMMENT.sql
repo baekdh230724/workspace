@@ -97,6 +97,8 @@ WHERE BOARD_DEL_FL = 'N'
 ORDER BY BOARD_NO DESC;
 
 
+
+
 -- 게시글 번호를 입력 받아 일치하는 게시글의
 -- 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
 -- 단, 삭제되지 않은 게시글만 조회 가능(BOARD_DEL_FL = 'N')
@@ -138,6 +140,8 @@ BOARD_CONTENT = ?
 WHERE BOARD_NO = ?
 ;
 
+
+COMMIT;
 
 
 

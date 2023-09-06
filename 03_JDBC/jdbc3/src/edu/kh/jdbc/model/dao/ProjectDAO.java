@@ -393,7 +393,9 @@ public class ProjectDAO {
 	 * @return boardList
 	 */
 	public List<Board> selectBoardList(Connection conn) {
+		
 		List<Board> boardList = new ArrayList<Board>();
+		
 		
 		String sql = "SELECT BOARD_NO, BOARD_TITLE, \r\n"
 				+ "	TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') B_CREATE_DATE,\r\n"

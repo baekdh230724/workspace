@@ -45,6 +45,7 @@ public class ProjectView {
 				
 				
 				
+				
 				// ------------------ 게시글 상세 조회(selectBoard) ------------------
 				// 게시글 번호를 입력 받아 일치하는 게시글의
 				// 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
@@ -56,8 +57,6 @@ public class ProjectView {
 				// 1) 게시글 상세조회(selectBoard(게시글번호)) 를 먼저 수행
 				// 2) 게시글 상세 조회 결과가 있을 경우 -> 조회수 증가(incrementReadCount(게시글 번호)) 수행 
 				System.out.println("8. 게시글 상세조회"); 
-				
-				
 				
 				// ------------------ 게시글 삭제(deleteBoard) ------------------
 				// 1) 로그인 여부 확인
@@ -96,9 +95,9 @@ public class ProjectView {
 				case 3 : updateMember(); break;
 				case 4 : updateDelFl(); break;
 				case 5 : selectAllMember();
+				
 				case 6 : insertBoard(); break;
 				case 7 : selectBoardList(); break;
-				
 				case 8 : selectBoard(); break;
 				case 9 : deleteBoard(); break;
 				case 10 : updateBoard(); break;
@@ -327,6 +326,7 @@ public class ProjectView {
 		
 		System.out.printf("[%s] %10s%10s | %s | %s | %s | %s \n",
 				"번호", "제목"," ", "작성일", "조회수", "작성자번호", "작성자 닉네임");
+		
 		for(Board b : boardList) {
 			// 게시글 번호, 제목, 작성일, 조회수, 작성자번호, 작성자 닉네임
 			System.out.printf("[%d] %20s    | %s | %d | %d | %s \n",
@@ -408,17 +408,19 @@ public class ProjectView {
         // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
 		int boardNo = writerCheck();
 		
+		
 		// 3) 일치할 경우
         // 정말 삭제하시겠습니까?(Y/N)을 출력 
         // -> Y 입력 시 BOARD_DEL_FL 컬럼 값을 'Y'로 수정하는 service 메서드 호출
-		
 		if(boardNo == 0) { // 로그인한 회원의 글이 아니면 
 			System.out.println("\n----- 로그인한 회원의 글만 삭제할 수 있습니다 -----\n");
 			return; 
 		}
 		
+		
 		System.out.print("정말 삭제하시겠습니까(Y/N) ? ");
 		char ch = sc.next().toUpperCase().charAt(0); // 입력된 문자열을 대문자로 변경한 후 0번 인덱스 문자를 반환
+		
 		
 		if(ch == 'N') { // N을 입력한 경우
 			System.out.println("\n----- 삭제 취소 -----\n");
@@ -454,14 +456,13 @@ public class ProjectView {
         // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
 		int boardNo = writerCheck();
 		
-        // 3) 일치할 경우
+
+		// 3) 일치할 경우
         // 수정할 제목, 내용을 입력 받아 해당 게시글의 제목, 내용을 수정
-		
 		if(boardNo == 0) { // 로그인한 회원의 글이 아니면 
 			System.out.println("\n----- 로그인한 회원의 글만 삭제할 수 있습니다 -----\n");
 			return; 
 		}
-		
 		
 		System.out.print("수정할 제목 입력 : ");
 		String title = sc.nextLine();
@@ -489,9 +490,4 @@ public class ProjectView {
 		
 		System.out.printf("\n***** %s *****\n\n", str);
 	}
-	
-	
-	
 }
-
-
