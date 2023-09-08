@@ -1,0 +1,9 @@
+strong{
+  color : red;
+  font-size: 1.3em;
+}
+
+/*----- 기본 속성 선택자 -----*/
+
+/* div 태그 중 name 속성의 값이 name-1인 요소만 선택 */
+div[name="name-1"]{ background-color: orange;}
