@@ -6,4 +6,16 @@ strong{
 /*----- 기본 속성 선택자 -----*/
 
 /* div 태그 중 name 속성의 값이 name-1인 요소만 선택 */
-div[name="name-1"]{ background-color: orange;}
+div[name="name-1"]{ background-color: green; }
+
+/* div 태그 중 name 속성의 값이 name-2인 요소만 선택 */
+div[name="name-2"]{ background-color: blue; }
+
+/* p 태그 중 data 속성의 값이 data-1인 요소만 선택 */
+p[data="data-1"]{ background-color: gray; }
+
+/* p 태그 중 data 속성의 값이 data-2인 요소만 선택 */
+p[data="data-2"]{ background-color: red; }
+
+/* 모든 요소 중 name 속성의 값이 name-1인 요소 선택 */
+[name="name-1"]{ color : yellow; }
