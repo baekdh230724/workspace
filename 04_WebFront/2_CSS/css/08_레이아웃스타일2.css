@@ -40,3 +40,70 @@
   margin : 100px;
   /* 상하좌우 다른 요소와 100px 만큼 떨어짐(간격을 만듦) */
 }
+
+
+/* box-sizing : border-box; */
+
+/* width/height 속성의 크기가 
+  content + padding + border와 같도록
+  content 영역의 크기를 자동 조정
+*/
+.border-box{
+  box-sizing: border-box;
+}
+
+
+/* padding, border, margin의 방향성 */
+#test2{
+  display: inline-block;
+
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  border-top : 5px solid red;
+  border-bottom: 10px double black;
+  border-left: 15px dotted green;
+  border-right: 20px dashed magenta;
+}
+
+
+
+#test3{
+  border : 1px solid black;
+
+  padding : 30px; /* 상하좌우 */
+  padding : 30px 50px; /* 상하  좌우 */
+  padding : 30px 50px 10px; /* 상 좌우 하 */
+  padding : 30px 20px 40px 50px; /* 상 우 하 좌 */
+
+  border-width : 3px; 
+  border-width : 3px 10px; 
+  border-width : 3px 5px 10px; 
+  border-width : 3px 5px 10px 20px; 
+
+  margin : 30px; /* 상하좌우 */
+  margin : 30px 50px; /* 상하  좌우 */
+  margin : 30px 50px 10px; /* 상 좌우 하 */
+  margin : 30px 20px 40px 50px; /* 상 우 하 좌 */
+}
+
+
+/* margin : auto 테스트 */
+.container{
+  box-sizing: border-box;
+  width: 500px;
+  height: 300px;
+  border: 3px solid black;
+}
+
+#test4{
+  margin: auto;
+  margin-top: 100px;
+}
