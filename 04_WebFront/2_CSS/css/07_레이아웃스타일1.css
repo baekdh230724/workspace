@@ -222,3 +222,20 @@
 
 .col6-1{ background-color: orange;}
 .col6-2{ background-color: yellow;}
+
+
+
+/* display :none 확인 하기*/
+.div-7{
+  border: 1px solid black;
+  height: 50px;
+  background-color: lightsalmon;
+}
+
+#div-7-2{
+  display: none;
+}
+
+#div-7-4{
+  visibility: hidden;
+}
