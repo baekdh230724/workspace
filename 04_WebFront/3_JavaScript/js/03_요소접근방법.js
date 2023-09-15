@@ -104,5 +104,4 @@ function cssTest(){
 
   arr[0].style.backgroundColor = "tomato";
   arr[1].style.backgroundColor = "yellow";
-
 }
