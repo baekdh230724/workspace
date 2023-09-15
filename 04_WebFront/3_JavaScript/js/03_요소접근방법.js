@@ -105,3 +105,22 @@ function cssTest(){
   arr[0].style.backgroundColor = "tomato";
   arr[1].style.backgroundColor = "yellow";
 }
+
+
+/* 채팅창 만들기 */
+function readValue(){
+  const bg = document.querySelector("#chatting-bg");
+  const input = document.querySelector("#user-input");
+
+  // 입력요소.value  : 값 읽어오기
+  // "문자열".length : 문자열의 길이
+  // " 문자열 ".trim() : 양쪽 공백 제거
+  // 입력요소.value.trim().length == 0  : 아무것도 입력하지 않았다면
+
+  if(input.value.trim().length == 0){
+    alert("채팅 내용을 입력해주세요");
+
+    
+  }
+
+}
