@@ -51,8 +51,63 @@ public class PizzaOrderServlet extends HttpServlet{
 		 * */
 		
 		dispatcher.forward(req, resp);
-		
 	}
+	
+	
+	
+	// -----------------------------------------------------------------
+	
+	
+	// form 태그 POST 방식 제출 시
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String pizza = req.getParameter("pizza"); // 치즈 피자-8000
+		String size = req.getParameter("size");  // R || L
+		int amount = Integer.parseInt(req.getParameter("amount")); // 1  (개)
+		
+		
+		/* 피자 이름, 가격 나누기 */
+		String[] arr = pizza.split("-");  // "-" 구분자로 쪼개어 String[] 반환
+		// arr == {"치즈 피자", "8000"}
+		
+		String pizzaName = arr[0]; // "치즈 피자"
+		int price = Integer.parseInt(arr[1]); // 8000
+		
+		
+		/* L 사이즈인 경우 4000원 추가 */
+		if(size.equals("L"))	price += 4000;
+		
+		
+		/* 수량 만큼 price에 곱하기 */
+		price *= amount;
+		// price = price * amount;
+		
+		
+		/* JSP로 요청 위임(forward)*/
+		
+		// JSP 경로는 webapp 폴더를 기준으로 작성!
+		// "/" == webapp
+		RequestDispatcher dispatcher 
+			= req.getRequestDispatcher("/WEB-INF/views/pizza_result.jsp");
+		
+		// JSP로 전달하는 req에는 파라미터가 담겨 있다!
+		// -> 그런데 pizzaName, price는 없다! (Servlet에서 만든 변수)
+		
+		// [해결 방법]
+		// req에 속성(Attribute)로 추가 하면
+		// JSP에서 꺼내 쓸 수 있다!
+		// (속성 == 필드(변수))
+		
+//		req.setAttribute(key, value) : 속성 추가
+		req.setAttribute("pizzaName", pizzaName);
+		req.setAttribute("price", price);
+		
+		dispatcher.forward(req, resp);
+	}
+	
+	
+	
 }
 
 
