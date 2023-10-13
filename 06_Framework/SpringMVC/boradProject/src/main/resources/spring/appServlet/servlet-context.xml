@@ -39,17 +39,11 @@
 	
 	<context:component-scan base-package="edu.kh.project" />
 	
-	
-	
 	<!-- @Transactional 어노테이션 인식하는 태그 추가 -->
 	<!-- 
 		1) namespaces 탭으로 이동해서 tx 체크
 		2) 태그 작성
 	 -->
 	 <tx:annotation-driven transaction-manager="transactionManager" />
-	
-	
-	
-	
 	
 </beans:beans>
