@@ -31,9 +31,6 @@ public class MainController {
 		model.addAttribute("address", "<h1>서울시 강남구</h1>");
 		
 		
-		
-		
-		
 		// 로그 출력 방법
 		// log.debug("문자열");
 		
