@@ -68,6 +68,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
+	@Override
+	public Member quickLogin(String memberEmail) {
+		return mapper.login(memberEmail);
+	}
 	
 }
 
