@@ -136,6 +136,30 @@ public class AdminController {
 	
 	
 	
+	/** 비밀번호를 "1234"(암호화 진행!) 로 초기화
+	 * @return
+	 */
+	@PostMapping("initPw")
+	public String initPw(
+		int memberNo,     String memberEmail,
+		RedirectAttributes ra) {
+		
+		// 서비스 호출
+		int result = service.initPw(memberNo);
+		
+		if(result > 0) {
+			ra.addFlashAttribute("message", "초기화 성공!!!");
+		}else {
+			ra.addFlashAttribute("message", "초기화 실패...");
+		}
+		
+		return "redirect:selectMember?inputEmail=" + memberEmail;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

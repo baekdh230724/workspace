@@ -1,8 +1,11 @@
 package edu.kh.project.admin.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.kh.project.admin.model.mapper.AdminMapper;
@@ -11,8 +14,14 @@ import edu.kh.project.member.model.dto.Member;
 @Service
 public class AdminServiceImpl implements AdminService {
 
+	
 	@Autowired
 	private AdminMapper mapper;
+	
+	@Autowired // 암호화 객체 의존성 주입
+	private BCryptPasswordEncoder bcrypt;
+	
+	
 	
 	@Override
 	public Member selectMember(String inputEmail) {
@@ -44,6 +53,27 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int restoration(int memberNo) {
 		return mapper.restoration(memberNo);
+	}
+	
+	
+	@Override
+	public int changeAuthority(int memberNo) {
+		return mapper.changeAuthority(memberNo);
+	}
+	
+	
+	@Override
+	public int initPw(int memberNo) {
+		
+		// 암호화된 1234 만들기
+		String encPw = bcrypt.encode("1234");
+		
+		// 마이바티스 코드에서 파라미터는 1개만 가능!!!
+		Map<String, Object> map = new HashMap<>();
+		map.put("encPw", encPw);
+		map.put("memberNo", memberNo);
+		
+		return mapper.initPw(map);
 	}
 	
 	

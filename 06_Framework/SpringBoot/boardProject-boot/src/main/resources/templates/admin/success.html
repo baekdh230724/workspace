@@ -80,7 +80,20 @@
   </table>
 
   <button onclick="location.href='main'">메인페이지</button>
+
   <button onclick="history.back()">돌아가기</button>
+
+
+  <!-- 비밀번호 초기화 -->
+  <form action="initPw" method="POST" th:object="${searchMember}">
+    <input type="hidden" th:value="*{memberNo}" name="memberNo">
+    <input type="hidden" th:value="*{memberEmail}" name="memberEmail">
+
+    <button style="color:red; background-color: white;">비밀번호 초기화</button>
+  </form>
+
+
+
 
   <script th:inline="javascript">
     // thymeleaf natural template

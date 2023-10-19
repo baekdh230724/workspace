@@ -1,11 +1,15 @@
 package edu.kh.project.admin.model.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.kh.project.member.model.dto.Member;
 
+/**
+ * 
+ */
 @Mapper
 public interface AdminMapper {
 
@@ -35,7 +39,18 @@ public interface AdminMapper {
 	 * @return result
 	 */
 	int restoration(int memberNo);
-	
+
+	/** 권한 변경
+	 * @param memberNo
+	 * @return result
+	 */
+	int changeAuthority(int memberNo);
+
+	/** 비밀번호 초기화
+	 * @param map
+	 * @return result
+	 */
+	int initPw(Map<String, Object> map);
 	
 
 }

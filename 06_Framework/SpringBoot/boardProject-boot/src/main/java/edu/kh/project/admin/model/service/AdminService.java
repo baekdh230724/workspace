@@ -28,6 +28,18 @@ public interface AdminService {
 	 * @return result
 	 */
 	int restoration(int memberNo);
+
+	/** 권한 변경
+	 * @param memberNo 
+	 * @return result
+	 */
+	int changeAuthority(int memberNo);
+
+	/** 비밀번호 초기화
+	 * @param memberNo
+	 * @return result
+	 */
+	int initPw(int memberNo);
 	
 	
 	

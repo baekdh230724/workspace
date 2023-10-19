@@ -48,6 +48,23 @@
 	</update>
 	
 	
+	<!-- 권한 변경 -->
+	<update id="changeAuthority">
+		UPDATE "MEMBER" SET
+		AUTHORITY = DECODE(AUTHORITY, 1, 2, 2, 1)
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+	<!-- 비밀번호 초기화 -->
+	<update id="initPw">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{encPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+	
 	
 	
 	
