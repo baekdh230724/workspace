@@ -16,6 +16,41 @@
 	</select>
 	
 	
+	<!-- 전체 회원 조회 -->
+	<!-- Member는 별칭 (DBConfig 클래스)-->
+	<!-- resultType 은 1행 결과를 저장할 타입 지정 -->
+	<select id="selectAll" resultType="Member">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_DEL_FL
+		FROM "MEMBER"
+		ORDER BY MEMBER_NO DESC
+	</select>
+	
+	
+	<!--
+		#{} : 출력 값 양쪽에 '' (홑따옴표) 추가
+		${} : 출력 값 그대로 출력 (홑따옴표 X)
+	-->
+	
+	<!-- 전체 회원 조회 (+정렬) -->
+	<select id="selectSort" resultType="Member">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_DEL_FL
+		FROM "MEMBER"
+		ORDER BY ${query}
+	</select>
+	
+	
+	
+	<!-- 회원 탈퇴 복구 -->
+	<update id="restoration">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'N'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+	
+	
+	
 	
 	
 </mapper>
