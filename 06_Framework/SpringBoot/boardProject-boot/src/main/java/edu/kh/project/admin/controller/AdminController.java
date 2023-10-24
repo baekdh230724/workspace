@@ -158,6 +158,15 @@ public class AdminController {
 	
 	
 	
+	// -----------------------------------------------------------------
+	
+	@GetMapping("ajaxTest")
+	public String ajaxTest() {
+		return "admin/ajaxTest";
+	}
+	
+	
+	
 	
 	
 	

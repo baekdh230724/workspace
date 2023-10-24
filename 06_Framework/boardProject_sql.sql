@@ -155,5 +155,28 @@ WHERE MEMBER_NO = 6;
 ROLLBACK;
 
 
+-- 회원 번호로 이메일 조회
+SELECT MEMBER_EMAIL
+FROM "MEMBER"
+WHERE MEMBER_NO = 5;
+
+
+-- 이메일 중복 검사(중복 O -> 1, 중복 X -> 0)
+SELECT COUNT(*) 
+FROM "MEMBER"
+WHERE MEMBER_DEL_FL = 'N'
+AND MEMBER_EMAIL = 'member01@naver.com123123123';
+
+
+-- 일부라도 일치하는 이메일 모두 조회
+SELECT MEMBER_EMAIL
+FROM "MEMBER"
+WHERE MEMBER_EMAIL LIKE '%com%';
+
+
+
+
+
+
 
 
