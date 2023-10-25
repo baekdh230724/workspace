@@ -55,6 +55,13 @@
 	</select>
 	
 	
+	<!-- 탈퇴 여부 수정 -->
+	<update id="updateFlag">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = #{flag}
+		WHERE MEMBER_NO = #{targetNo}
+	</update>
+	
 	
 	
 	

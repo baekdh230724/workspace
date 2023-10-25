@@ -219,6 +219,52 @@ btn5.addEventListener("click", () => {
       // ======================================================
       // 버튼 클릭 시 회원 탈퇴/복구 ajax
 
+      btn.addEventListener("click", e => {
+        // 버튼에 속성 중 "data-flag" 값이 'N'이면 'Y', 'Y'이면 'N' 저장
+        // -> DB UPDATE 시 MEMBER_DEL_FL에 대입할 값으로 이용
+        const flag = e.target.getAttribute("data-flag") == 'N' ? 'Y' : 'N';
+
+        // 회원 번호
+        // - 클릭된 버튼의 부모의 부모의 자식들 중 0번째
+        const temp = e.target.parentElement.parentElement.children[0];
+        const targetNo = temp.innerText;
+
+        // 필요한 데이터를 한 번에 저장한 JS 객체 생성
+        const obj = {};
+        obj.flag = flag;
+        obj.targetNo = targetNo;
+
+        // AJAX 코드 작성
+        fetch("/ajax/updateFlag", {
+          method : "PUT", // PUT 방식 요청
+          headers: {"Content-Type": "application/json"}, 
+          body : JSON.stringify(obj)
+        })
+        .then( resp => resp.text() )
+        .then( result => { 
+
+          if(result > 0){ // 성공 시
+            
+            if(flag == 'Y'){
+               btn.innerText = "복구";
+               btn.style.backgroundColor = "greenyellow";
+            }else{
+              btn.innerText = "탈퇴";
+              btn.style.backgroundColor = "pink";
+            }
+
+            btn.setAttribute("data-flag", flag);
+          }
+
+          else{
+            alert("탈퇴 여부 변경 실패!!");
+          }
+
+         })
+        .catch( e => console.log(e));
+
+      });
+
       // ======================================================
 
       td5.append(btn); // td5에 추가
@@ -268,8 +314,17 @@ btn6.addEventListener("click", () => {
     body : JSON.stringify(member) // POST,PUT,DELETE는 body에 데이터를 담아서 전달
     // JSON.stringify(member) : member 객체를 JSON으로 변환(문자열화)
   })
-  .then()
-  .then()
+  .then( resp => resp.text() )
+  .then( result => {
+    if(result > 0){
+      alert("가입 성공");
+
+      // input 태그 작성 값 모두 삭제
+      sampleInputList.forEach( input => input.value="" );
+    }
+
+    else{ alert("가입 실패 ..."); }
+  } )
   .catch(e => console.log(e));
 
 });
