@@ -5,12 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.project.admin.model.service.AjaxService;
 import edu.kh.project.member.model.dto.Member;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j // log 이용
 @Controller
 @RequestMapping("ajax") // 상위 공통 주소
 public class AjaxController {
@@ -105,6 +109,47 @@ public class AjaxController {
 	public List<String> selectEmailList(String keyword){
 		return service.selectEmailList(keyword);
 	}
+	
+	
+	
+	/** 모든 회원 정보 조회
+	 * @return
+	 */
+	@GetMapping(value="selectAll", produces="application/json; charset=UTF-8")
+	@ResponseBody // 비동기 통신 응답(forward/redirect X, 데이터 자체)
+	public List<Member> selectAtll() {
+		
+		// List (Java 객체)
+		// -> HttpMessageConverter 가 JSON(문자열)으로 변환
+		//  (+ produces 속성을 이용해 
+		//    응답 받는 JS에서 자동으로 JS 객체로 변환하도록함)
+		// -> JS 객체
+		
+		return service.selectAll();
+	}
+	
+	
+	
+	// @RequestBody (요청 body)
+	// - 요청 body에 담긴 내용을 얻어와 오른쪽 매개변수에 대입
+	// - HttpMessageConverter가
+	//   이 과정에서 데이터 타입을 Java에 맞게 알맞게 변환
+	//   number -> int/double 
+	//   string -> String
+	//   JSON -> DTO, List, Map
+	
+	/** 샘플 계정 삽입
+	 * @return
+	 */
+	@PostMapping("insertMember")
+	@ResponseBody // 반환값이 그대로 돌아감(비동기)
+	public int insertMember(@RequestBody Member member) {
+		
+		log.debug(member.toString());
+		
+		return 0;
+	}
+	
 	
 	
 	

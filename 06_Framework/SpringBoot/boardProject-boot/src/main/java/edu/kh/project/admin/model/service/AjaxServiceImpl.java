@@ -36,4 +36,11 @@ public class AjaxServiceImpl implements AjaxService {
 	}
 	
 	
+	@Override
+	public List<Member> selectAll() {
+		return mapper.selectAll();
+	}
+	
+	
+	
 }

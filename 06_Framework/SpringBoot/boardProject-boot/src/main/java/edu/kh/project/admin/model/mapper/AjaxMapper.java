@@ -34,4 +34,10 @@ public interface AjaxMapper {
 	 */
 	public List<String> selectEmailList(String keyword);
 
+	
+	/** 모든 회원 정보 조회
+	 * @return memberList
+	 */
+	public List<Member> selectAll();
+
 }

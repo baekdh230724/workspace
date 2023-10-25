@@ -46,6 +46,17 @@
 	
 	
 	
+	<!-- 모든 회원 정보 조회 -->
+	<select id="selectAll" resultType="Member">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME,
+			MEMBER_TEL, MEMBER_DEL_FL
+		FROM "MEMBER"
+		ORDER BY MEMBER_NO DESC
+	</select>
+	
+	
+	
+	
 	
 	
 	
