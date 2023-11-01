@@ -45,8 +45,17 @@
         </form>
     </main>
 
+
+    <script th:inline="javascript">
+        const message = /*[[${message}]]*/ "메시지";
+        if(message != null) alert(message);
+    </script>
+
+
     <!-- main.js 추가 -->
     <script src="/js/main.js"></script>
+
+
 
 </body>
 </html>
