@@ -176,7 +176,8 @@ public class MyPageController {
 	// (추가 설정 필요!)
 	
 	/** 프로필 이미지 수정
-	 * @param profileImg : 실제 업로드된 프로필 이미지
+	 * @param profileImg : 실제 업로드된 프로필 이미지 
+	 * 						(파일 선택 여부 관련 없이 무조건 객체 생성)
 	 * @param loginMemebr
 	 * @param ra 
 	 * @return

@@ -82,7 +82,7 @@ public class FileConfig implements WebMvcConfigurer{
 	
 	// MultipartResolver: 
 	// 텍스트 요청 데이터(문자열, 숫자 등)는 String으로 변환
-	// Fiel 요청 데이터는 MultipartFile로 변환해서
+	// File 요청 데이터는 MultipartFile로 변환해서
 	// Controller 메서드로 전달
 	
 	// MultipartResolver bean 생성
