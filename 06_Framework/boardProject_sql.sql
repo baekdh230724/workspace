@@ -774,7 +774,11 @@ AND BOARD_TITLE LIKE '%12%' /*제목*/
 ORDER BY BOARD_NO DESC;
 
 
+-----------------------------------------
 
+-- 채팅
+CREATE SEQUENCE SEQ_ROOM_NO NOCACHE;
+CREATE SEQUENCE SEQ_MESSAGE_NO NOCACHE;
 
 
 
