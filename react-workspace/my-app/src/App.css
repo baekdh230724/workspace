@@ -5,3 +5,6 @@
 
 /* 글자 가운데 선 긋기 */
 .completed{ text-decoration : line-through; }
+
+
+.color-red { color: red; }

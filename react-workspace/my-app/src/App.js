@@ -14,6 +14,10 @@ import State3 from './components/R08_State3';
 
 import TodoList from './components/R09_TodoList';
 
+import Context1 from './components/R10_Context1';
+import Context2 from './components/R11_Context2';
+import Context3 from './components/R13_Context/Parent';
+
 
 /* =================================================== */
 /* 
@@ -61,7 +65,13 @@ function App() {
       <State3 /> */}
 
 
-      <TodoList/>
+      {/* <TodoList/> */}
+
+
+      {/* <Context1/> */}
+      {/* <Context2/> */}
+      <Context3/>
+      
     </>
   );
 }
